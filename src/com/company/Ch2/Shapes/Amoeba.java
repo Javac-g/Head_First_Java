@@ -1,4 +1,4 @@
-package com.company.Ch2;
+package com.company.Ch2.Shapes;
 
 public class Amoeba extends Shape{
     private int x, y;

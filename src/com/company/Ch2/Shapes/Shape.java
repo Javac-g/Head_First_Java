@@ -1,4 +1,4 @@
-package com.company.Ch2;
+package com.company.Ch2.Shapes;
 
 public abstract class Shape {
     public  void rotate(){

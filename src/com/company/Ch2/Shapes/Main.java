@@ -1,6 +1,5 @@
-package com.company.Ch2;
+package com.company.Ch2.Shapes;
 
-import java.util.Optional;
 import java.util.Scanner;
 
 public class Main {
