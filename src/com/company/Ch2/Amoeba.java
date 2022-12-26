@@ -1,9 +1,10 @@
 package com.company.Ch2;
 
 public class Amoeba extends Shape{
+    private int x, y;
     @Override
     public void rotate() {
-        System.out.println("Rotated 360 degrees");
+        System.out.println("Rotated 360 degrees on center coords : " + x + y);
     }
 
     @Override
