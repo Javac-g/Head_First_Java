@@ -34,7 +34,8 @@ public class Dog {
 
         System.out.println("Last dog name is: " + myDogs[3].getName());
         int x = 0;
-        while (x < myDogs.length-1){
+        while (x < myDogs.length){
+            System.out.println(myDogs[x].getName());
             myDogs[x].bark();
             x+=1;
         }
