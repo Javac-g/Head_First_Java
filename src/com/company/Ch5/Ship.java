@@ -4,18 +4,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ship {
-    private String name;
+    private final String name;
+    private Boolean alive;
+    private  int life ;
 
-    private List<String> coords = new ArrayList<>();
+
+    private final List<String> coords = new ArrayList<>();
+
+    public Ship(String name) {
+        this.alive = true;
+        this.name = name;
+        this.life = 3;
+    }
+
+    public Boolean getAlive() {
+        return alive;
+    }
+
+    public void setAlive(Boolean alive) {
+        this.alive = alive;
+    }
 
     public List<String> getCoords() {
         return coords;
     }
 
-    public Ship(String name) {
-        this.name = name;
+    public String getName() {
+        return name;
     }
 
+    public int getLife() {
+        return life;
+    }
+    public void setLife(int life) {
+        this.life = life;
+    }
     public void setLocation(String x, String y, String z) {
         coords.add(x);
         coords.add(y);
