@@ -45,11 +45,11 @@ public class GameSetup {
         Random r = new Random();
         String cx;
 
-        int x,y,z;
+        int x,y,z,word;
 
-        x = r.nextInt(coords.size());
-
-        cx = coords.get(x) + x;
+        x = r.nextInt(7);
+        word = r.nextInt(coords.size());
+        cx = coords.get(word) + x;
 
         System.out.println(coords);
         String cy = "";
@@ -58,16 +58,16 @@ public class GameSetup {
 
         if(x >= 5){
             y = x-1;
-            cy = coords.get(x) + y ;
+            cy = coords.get(word) + y ;
             z = y-1;
-            cz = coords.get(x) + z ;
+            cz = coords.get(word) + z ;
         } else {
             y = x + 1;
             z = y + 1;
-            cy = coords.get(x) + y ;
-            cz = coords.get(x) + z ;
+            cy = coords.get(word) + y ;
+            cz = coords.get(word) + z ;
         }
-        coords.remove(x);
+        coords.remove(word);
 
 
 
