@@ -46,7 +46,7 @@ public class GameLauncher {
         }
     }
     public static void processWin(int life){
-        if (life == -1){
+        if (life == 0){
             System.out.println("Win all ships killed");
             gameOver = true;
         }
@@ -60,7 +60,7 @@ public class GameLauncher {
 
         processWin(life);
         processKill(strike);
-        String damagedArea = processMove();
+        String damagedArea = processMove().toUpperCase();
         processDamage(damagedArea);
     }
 

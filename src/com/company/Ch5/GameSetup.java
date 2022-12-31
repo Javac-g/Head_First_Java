@@ -9,6 +9,9 @@ import java.util.Random;
 public class GameSetup {
     private final List<Ship> battleField = new ArrayList<>();
     private List<String> coords =new ArrayList();
+    private int x,word;
+    private String coordY;
+    private String coordZ;
 
     public GameSetup() {
         coords.add("A");
@@ -35,37 +38,53 @@ public class GameSetup {
         test(s3);
     }
 
+
+
+
+
+    public  void setCoordY(String coordY) {
+        this.coordY = coordY;
+    }
+
+
+    public  void setCoordZ(String coordZ) {
+        this.coordZ = coordZ;
+    }
+
     public List<Ship> getBattleField() {
         return battleField;
     }
+    public void highHorizont(int x,int word){
 
+        int y = x-1;
+        setCoordY(coords.get(word) + y);
+        int z = y-1;
+        setCoordZ(coords.get(word) + z);
+
+    }
+    public void lowHorizont(int x,int word){
+        int y = x + 1;
+        int z = y + 1;
+        setCoordY(coords.get(word) + y);
+        setCoordZ(coords.get(word) + z);
+    }
 
     public void setShipsCoords(Ship s){
 
         Random r = new Random();
-        String cx;
-
-        int x,y,z,word;
 
         x = r.nextInt(7);
         word = r.nextInt(coords.size());
-        cx = coords.get(word) + x;
+        String coordX = coords.get(word) + x;
 
         System.out.println(coords);
-        String cy = "";
-        String cz = "";
+
 
 
         if(x >= 5){
-            y = x-1;
-            cy = coords.get(word) + y ;
-            z = y-1;
-            cz = coords.get(word) + z ;
+            highHorizont(x,word);
         } else {
-            y = x + 1;
-            z = y + 1;
-            cy = coords.get(word) + y ;
-            cz = coords.get(word) + z ;
+            lowHorizont(x,word);
         }
         coords.remove(word);
 
@@ -73,7 +92,7 @@ public class GameSetup {
 
 
 
-        s.setLocation(cx,cy,cz);
+        s.setLocation(coordX,coordY,coordZ);
 
     }
     public void test(Ship s){
