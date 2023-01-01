@@ -1,8 +1,7 @@
-package com.company.Ch5;
+package com.company.Ch5.MyWork;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 

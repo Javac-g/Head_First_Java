@@ -1,6 +1,5 @@
-package com.company.Ch5;
+package com.company.Ch5.MyWork;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 public class GameLauncher {
@@ -9,6 +8,7 @@ public class GameLauncher {
     private static boolean gameOver;
     private static int life;
     private static int strike = 0;
+    private static int N = 0;
 
     public static void warProcess(){
         for (int i = 0; i < gameSetup.getBattleField().size();i++){
@@ -28,10 +28,26 @@ public class GameLauncher {
 
                 }
             }
+            processMiss(x,damagedArea);
 
 
         }
+
+
     }
+    public static void processMiss(Ship ship,String area){
+        int count = 0;
+        for (String c: ship.getCoords()){
+            if (c.equals(area)){
+                count++;
+            }
+        }
+        if (count == 0){
+            System.out.println("Miss [" + ship.getName() + "]");
+        }
+    }
+    public void processDamage(){}
+
     public static void processKill(int strike){
         if(strike == 3){
             for (int i = 0;i < gameSetup.getBattleField().size();i++) {
@@ -49,10 +65,13 @@ public class GameLauncher {
         if (life == 0){
             System.out.println("Win all ships killed");
             gameOver = true;
+            System.out.println("You took " + N + " guesses");
+
         }
     }
     public static String processMove(){
         System.out.println("Enter Field: ");
+        N++;
         return scanner.nextLine();
     }
     public static void processShooting(){
