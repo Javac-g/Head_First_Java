@@ -1,5 +1,7 @@
 package com.company.Ch5.ChapterExample;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,7 +17,10 @@ public class SimpleTestDrive {
 
         int numOfGuesses = 0;
         int startX = r.nextInt(0,4);
-        int[] location = {startX,startX+1,startX+2};
+        List<Integer> location =new ArrayList<>();
+        location.add(startX);
+        location.add(startX+1);
+        location.add(startX+2);
         ship.setLocationCells(location);
         boolean isAlive = true;
         while (isAlive){
