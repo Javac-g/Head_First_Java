@@ -55,27 +55,45 @@ public class GameSetup {
     public List<Ship> getBattleField() {
         return battleField;
     }
-    public void highVertical(int x, int word){
-        if (word >= 5) {
-
-
-            setCoordY(coords.get(word - 1) + x);
-            setCoordZ(coords.get(word - 2) + x);
-        }else {
-            setCoordY(coords.get(word + 1) + x);
-            setCoordZ(coords.get(word + 2) + x);
-
-        }
-    }
+//    public void highVertical(int x, int word){
+//        if (word >= 5) {
+//            String cx = coords.get(word);
+//            String cy = coords.get(word - 1);
+//            String cz = coords.get(word - 2);
+//
+//            setCoordY(coords.get(word - 1) + x);
+//            coords.remove(cy);
+//
+//            setCoordZ(coords.get(word - 2) + x);
+//            coords.remove(cz);
+//
+//            coords.remove(cx);
+//        }else {
+//            String cx = coords.get(word);
+//            String cy = coords.get(word + 1);
+//            String cz = coords.get(word + 2);
+//
+//            setCoordY(coords.get(word + 1) + x);
+//            coords.remove(cy);
+//
+//            setCoordZ(coords.get(word + 2) + x);
+//            coords.remove(cz);
+//
+//            coords.remove(cx);
+//
+//        }
+//    }
 
     public void highHorizon(int x, int word){
 
         if (x >= 5){
             setCoordY(coords.get(word) + (x - 1));
             setCoordZ(coords.get(word) + (x - 2));
+            coords.remove(word);
         }else {
             setCoordY(coords.get(word) + (x + 1));
             setCoordZ(coords.get(word) + (x + 2));
+            coords.remove(word);
         }
 
 
@@ -89,7 +107,7 @@ public class GameSetup {
         x = r.nextInt(7);
         System.out.println("x: " + x);
         word = r.nextInt(coords.size());
-        System.out.println("word: " + word);
+        System.out.println("word: " + coords.get(word));
         String coordX = coords.get(word) + x;
 
         System.out.println(coords);
@@ -98,12 +116,10 @@ public class GameSetup {
         int ch = choose.nextInt(3);
 
 
-        if(ch == 2){
-            highHorizon(x,word);
-        } else if(ch == 1) {
-            highVertical(x,word);
-        }
-        coords.remove(word);
+
+        highHorizon(x,word);
+
+
 
 
 
