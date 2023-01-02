@@ -11,9 +11,13 @@ public class GameLauncher {
     private static int N = 0;
 
     public static void warProcess(){
+        int index = -1;
         for (int i = 0; i < gameSetup.getBattleField().size();i++){
             if (!gameSetup.getBattleField().get(i).getAlive()){
+                index = i;
                 --life;
+                System.out.println("HP: " + life);
+                gameSetup.getBattleField().remove(index);
             }
         }
     }
@@ -46,7 +50,7 @@ public class GameLauncher {
             System.out.println("Miss [" + ship.getName() + "]");
         }
     }
-    public void processDamage(){}
+
 
     public static void processKill(int strike){
         if(strike == 3){
@@ -67,6 +71,7 @@ public class GameLauncher {
             gameOver = true;
             System.out.println("You took " + N + " guesses");
 
+
         }
     }
     public static String processMove(){
@@ -75,12 +80,12 @@ public class GameLauncher {
         return scanner.nextLine();
     }
     public static void processShooting(){
-
-
         processWin(life);
-        processKill(strike);
         String damagedArea = processMove().toUpperCase();
         processDamage(damagedArea);
+        processWin(life);
+        processKill(strike);
+        ;
     }
 
     public static void main(String...args){

@@ -16,10 +16,11 @@ public class GameSetup {
         coords.add("A");
         coords.add("B");
         coords.add("C");
+        coords.add("D");
         coords.add("E");
         coords.add("F");
         coords.add("G");
-
+        System.out.println(coords);
         Ship s1 = new Ship("Mariner");
         Ship s2 = new Ship("Interceptor");
         Ship s3 = new Ship("Flagman");
@@ -31,6 +32,7 @@ public class GameSetup {
         battleField.add(s1);
         battleField.add(s2);
         battleField.add(s3);
+        System.out.println("Battlefield: " + battleField.size());
 
         test(s1);
         test(s2);
@@ -53,37 +55,53 @@ public class GameSetup {
     public List<Ship> getBattleField() {
         return battleField;
     }
-    public void highHorizont(int x,int word){
+    public void highVertical(int x, int word){
+        if (word >= 5) {
 
-        int y = x-1;
-        setCoordY(coords.get(word) + y);
-        int z = y-1;
-        setCoordZ(coords.get(word) + z);
+
+            setCoordY(coords.get(word - 1) + x);
+            setCoordZ(coords.get(word - 2) + x);
+        }else {
+            setCoordY(coords.get(word + 1) + x);
+            setCoordZ(coords.get(word + 2) + x);
+
+        }
+    }
+
+    public void highHorizon(int x, int word){
+
+        if (x >= 5){
+            setCoordY(coords.get(word) + (x - 1));
+            setCoordZ(coords.get(word) + (x - 2));
+        }else {
+            setCoordY(coords.get(word) + (x + 1));
+            setCoordZ(coords.get(word) + (x + 2));
+        }
+
 
     }
-    public void lowHorizont(int x,int word){
-        int y = x + 1;
-        int z = y + 1;
-        setCoordY(coords.get(word) + y);
-        setCoordZ(coords.get(word) + z);
-    }
+
 
     public void setShipsCoords(Ship s){
 
         Random r = new Random();
 
         x = r.nextInt(7);
+        System.out.println("x: " + x);
         word = r.nextInt(coords.size());
+        System.out.println("word: " + word);
         String coordX = coords.get(word) + x;
 
         System.out.println(coords);
 
+        Random choose = new Random();
+        int ch = choose.nextInt(3);
 
 
-        if(x >= 5){
-            highHorizont(x,word);
-        } else {
-            lowHorizont(x,word);
+        if(ch == 2){
+            highHorizon(x,word);
+        } else if(ch == 1) {
+            highVertical(x,word);
         }
         coords.remove(word);
 
