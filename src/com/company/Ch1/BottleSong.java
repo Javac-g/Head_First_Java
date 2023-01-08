@@ -3,10 +3,10 @@ package com.company.Ch1;
 public class BottleSong {
     public static void main(String...args){
         int bottleNum = 10;
-        String word = "bottles";
+        String word = " bottles ";
         while(bottleNum > 0){
             if (bottleNum == 1){
-                word = "bottle";
+                word = " bottle ";
             }
             System.out.println(bottleNum + " green " + word + " hanging on the wall");
             System.out.println(bottleNum + " green " + word + " hanging on the wall");
